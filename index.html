@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
     <link
       rel="stylesheet"
@@ -17,28 +18,37 @@
       <div class="container">
             <div class="weather-app-wrapper">
         <div class="Weather-app">
-        <h1>Bamenda</h1>
+          <div class="overview">
+        <h1 id="city"></h1>
         <ul>
           <li>Monday 1:47</li>
-          <li>clear</li>
+          <li id ="description"></li>
         </ul>
-        <div class="row">
-          <div class="col-sm-6">
-            
-            <h2>🥚12°C | °F
-            </h2> 
-          </div>
         </div>
         <div class="row">
-        <div class="col-sm-6">
-          <div class="float-right">
+          <div class="col-6">
+            <div class="clearfix weather-temperature">
+              <img: src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" alt="clear"
+              class="float-left"/>
+            🥚12°C | °F
+            <div class="float left" >
+              <strong id ="temperature"></strong><span class="units">°C/<a href="#">°F</a></span>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+         
+       
           <ul>
-            <li>Precipitation :0%</li>
-            <li>Humidity :78%</li>
-            <li>wind :2km/h</li>
+            
+            <li>
+              Humidity:<span id="humidity"></span>%
+            </li>
+            <li>
+              wind :2km/h
+            </li>
           </ul>
-          </div>
-          </div>
           </div>
           </div>
           </div>
@@ -55,6 +65,7 @@
         </div>
  </div>
       </div>
+    </div>
     </div>
         <script src="src/app.js"></script>
        
