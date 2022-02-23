@@ -18,11 +18,9 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  return "${day} ${hours}:${minutes}";
-  return "monday 1:47";
+  return `${day} ${hours}:${minutes}`;
 }
 function displayTemperature(response) {
-
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
@@ -37,24 +35,31 @@ function displayTemperature(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
-  iconElement.setAttribute
-    ("src",
-      'http://openweathermap.org/img/wn/${response.data.weather[0].icon}d@2x.png");
-      iconElement.setAttribute("alt", response.data.weather[0].description);
-}
-function search(city) {
-  let apiKey = "9acfb841e7c19f9624e7d8ba9d5fb29";
 
-let city = "New York";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(displayTemperature);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}d@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+}
+function searchCity(city) {
+  let apiKey = "4c13efb242fa19ea8b668c307bf38b0b";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
 }
 function search(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
-  console.log(cityInputElement.value);
+  searchCity(cityInputElement.value);
 }
-
-search("New York");
-let form = document.querySelector("#search form");
-form.addEventListener("submit",handleSubmit);
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let fahrenheitTemperature = (temperatureElement.innerHTML * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", search);
+searchCity("New York");
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
