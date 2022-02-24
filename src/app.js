@@ -1,5 +1,5 @@
 function formatDate(timestamp) {
-  let Date = newDate(timestamp);
+  let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = "0${hours}";
@@ -57,7 +57,7 @@ function search(event) {
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  // removr the active class from the celsius link
+  // remove the active class from the celsius link
   celsiustLink.classList.remove("active");
   // add the active link to fahrenheit
   fahrenheitLink.classList.add("active");
@@ -80,7 +80,7 @@ let celsiusTemperature = null;
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
-let celsiustLink = document.querySelector("#celsius-link");
+let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-searchCity("New York");
+searchCity("Bamenda");
