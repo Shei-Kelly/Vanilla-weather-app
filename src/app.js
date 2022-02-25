@@ -58,7 +58,7 @@ function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
   // remove the active class from the celsius link
-  celsiustLink.classList.remove("active");
+  celsiusLink.classList.remove("active");
   // add the active link to fahrenheit
   fahrenheitLink.classList.add("active");
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
